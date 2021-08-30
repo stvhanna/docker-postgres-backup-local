@@ -88,6 +88,14 @@ Most variables are the same as in the [official postgres image](https://hub.dock
 | SCHEDULE | [Cron-schedule](http://godoc.org/github.com/robfig/cron#hdr-Predefined_schedules) specifying the interval between postgres backups. Defaults to `@daily`. |
 | TZ | [POSIX TZ variable](https://www.gnu.org/software/libc/manual/html_node/TZ-Variable.html) specifying the timezone used to evaluate SCHEDULE cron (example "Europe/Paris"). |
 
+Entry                  | Description                                | Equivalent To
+-----                  | -----------                                | -------------
+@yearly (or @annually) | Run once a year, midnight, Jan. 1st        | 0 0 0 1 1 *
+@monthly               | Run once a month, midnight, first of month | 0 0 0 1 * *
+@weekly                | Run once a week, midnight between Sat/Sun  | 0 0 0 * * 0
+@daily (or @midnight)  | Run once a day, midnight                   | 0 0 0 * * *
+@hourly                | Run once an hour, beginning of hour        | 0 0 * * * *
+
 #### Special Environment Variables
 
 This variables are not intended to be used for normal deployment operations:
